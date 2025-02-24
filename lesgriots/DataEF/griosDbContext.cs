@@ -29,6 +29,7 @@ public partial class griosDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
+        
     }
     //=> optionsBuilder.UseSqlServer("Server=DESKTOP-HLSKODD;Database=lesgriots;User Id=sa;Password=sa;TrustServerCertificate=True");
 

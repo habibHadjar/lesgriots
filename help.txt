@@ -1,0 +1,15 @@
+Ouvre SQL Server Configuration Manager
+Va dans SQL Server Network Configuration > Protocols for MSSQLSERVER
+Active TCP/IP
+Redémarre SQL Server
+
+apt update
+apt install -y netcat-openbsd
+
+
+
+Vérifier si SQL Server écoute bien sur le port 1433
+netstat -an | findstr 1433
+exp: TCP    0.0.0.0:1433           0.0.0.0:0              LISTENING
+
+docker exec -it --user root 2da84f5927e22d87741c6deb1a0d5db40153eaf23f801e0ff9db7532c2389e38 sh
