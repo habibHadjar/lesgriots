@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Lesgriots.API.Models;
+using Lesgriots.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lesgriots.API.Data;
+namespace Lesgriots.Infrastructure.Data;
 
 public partial class MaDbContext : DbContext
 {
@@ -27,11 +27,11 @@ public partial class MaDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
 
-    }
+    //}
     //=> optionsBuilder.UseSqlServer("Server=host.docker.internal;Database=lesgriots;User Id=sa;Password=sa;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -201,6 +201,9 @@ public partial class MaDbContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
+            entity.Property(e => e.Profile)
+                .HasMaxLength(100)
+                .HasColumnName("profile");
         });
 
         OnModelCreatingPartial(modelBuilder);

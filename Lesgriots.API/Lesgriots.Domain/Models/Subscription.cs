@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lesgriots.API.Models;
+namespace Lesgriots.Domain.Models;
 
-public partial class AuthToken
+public partial class Subscription
 {
     public int Id { get; set; }
 
     public int UserId { get; set; }
 
-    public string Token { get; set; } = null!;
+    public byte Pland { get; set; }
 
-    public byte Purpose { get; set; }
+    public byte Status { get; set; }
 
-    public DateTime ExpiresAt { get; set; }
+    public DateTime? StartDate { get; set; }
 
-    public bool? IsUsed { get; set; }
+    public DateTime EndDate { get; set; }
+
+    public bool? IsDeleted { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
