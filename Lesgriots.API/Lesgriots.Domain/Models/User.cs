@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lesgriots.API.Models;
+namespace Lesgriots.Domain.Models;
 
 public partial class User
 {
@@ -22,6 +22,7 @@ public partial class User
     public DateTime? CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
+    public string? Profile { get; set; } = "user";
 
     public virtual ICollection<AuthToken> AuthTokens { get; set; } = new List<AuthToken>();
 

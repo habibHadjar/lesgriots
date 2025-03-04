@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lesgriots.API.Models;
+namespace Lesgriots.Domain.Models;
 
 public partial class Transaction
 {
