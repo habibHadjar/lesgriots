@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Lesgriots.Infrastructure;
+using Lesgriots.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,6 +77,9 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+builder.Services.AddMongoDb(builder.Configuration);
+builder.Services.AddScoped<IAssetService, AssetService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
