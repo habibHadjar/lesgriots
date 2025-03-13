@@ -11,6 +11,17 @@ using Lesgriots.Infrastructure;
 using Lesgriots.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
+
 
 // Add services to the container.
 // Injection des dépendances
@@ -82,6 +93,7 @@ builder.Services.AddScoped<IAssetService, AssetService>();
 
 var app = builder.Build();
 
+app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

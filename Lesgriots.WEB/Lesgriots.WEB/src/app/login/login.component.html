@@ -1,0 +1,9 @@
+<div class="login-container">
+    <h2>Connexion</h2>
+    <form (ngSubmit)="login()">
+      <input type="text" [(ngModel)]="email" name="email" placeholder="Email" required />
+      <input type="text" [(ngModel)]="password" name="password" placeholder="Mot de passe" required />
+      <button type="submit">Connexion</button>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </form>
+  </div>
