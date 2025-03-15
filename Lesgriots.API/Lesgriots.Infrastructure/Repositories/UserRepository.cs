@@ -50,6 +50,19 @@ namespace Lesgriots.Application.Repositories
                 _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
             }
+
+            int rowsAffected = await _context.Database.ExecuteSqlRawAsync(
+            "UPDATE Components SET Title = {0}, Version = Version + 1 WHERE InternalId = {1} AND Version = {2}",
+            "TATA", "6255IDbneeHGT32", 3);
+
+            if (rowsAffected == 0)
+            {
+                throw new Exception("Un autre développeur a modifié cet objet. Veuillez rafraîchir vos données.");
+            }
+
+
+
+
         }
     }
 }

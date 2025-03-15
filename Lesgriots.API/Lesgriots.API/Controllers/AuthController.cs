@@ -17,15 +17,22 @@ namespace Lesgriots.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var result = await _authService.AuthenticateAsync(request.Name, request.Password);
+            var result = await _authService.AuthenticateAsync(request.Mail, request.Password);
             if (result == null) return Unauthorized("Invalid credentials");
             return Ok(result);
         }
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login(string email, string password)
+        //{
+        //    var result = await _authService.AuthenticateAsync(email, password);
+        //    if (result == null) return Unauthorized("Invalid credentials");
+        //    return Ok(result);
+        //}
     }
 
     public class LoginRequest
     {
-        public string Name { get; set; } = string.Empty;
+        public string Mail { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
     }
 }
