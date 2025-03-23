@@ -27,12 +27,12 @@ public partial class MaDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //{
-    //    optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        //optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
+        optionsBuilder.UseSqlServer("Data Source=tcp:51.15.234.217;Database=lesgriots;User Id=remoteuser;Password=MotDePasseFort!;TrustServerCertificate=True");
 
-    //}
-    //=> optionsBuilder.UseSqlServer("Server=host.docker.internal;Database=lesgriots;User Id=sa;Password=sa;TrustServerCertificate=True");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -21,7 +21,7 @@ namespace Lesgriots.API.Controllers
 
         }
 
-        [Authorize(Roles = "admin,superadmin")]
+        [Authorize(Roles = "user,admin,superadmin")]
         [HttpGet(Name = "user")]
         public async Task<IActionResult> GetAll()
         {
